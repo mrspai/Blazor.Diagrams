@@ -1,0 +1,31 @@
+﻿@page "/demos/layout"
+@using Blazor.Diagrams.Core.Layout
+@inherits LayoutComponent
+@layout DemoLayout
+@inject LayoutData LayoutData
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        LayoutData.Title = "Simple";
+        LayoutData.Info = "A simple example of Blazor.Diagrams.";
+        LayoutData.DataChanged();
+    }
+}
+
+<div style="position: absolute; z-index: 9999;">
+    <button class="btn btn-primary m-2" @onclick="()=>diagramManager.ApplyLayout(LayoutType.Sugiyama)">Sugiyama layout</button>
+    <button class="btn btn-primary m-2" @onclick="()=>diagramManager.ApplyLayout(LayoutType.DisconnectedGraph)">Disconnected layout</button>
+    <button class="btn btn-primary m-2" @onclick="()=>diagramManager.ApplyLayout(LayoutType.MDS)">MDS layout</button>
+    <button class="btn btn-primary m-2" @onclick="()=>diagramManager.ApplyLayout(LayoutType.Ranking)">Ranking layout</button>
+</div>
+
+<CascadingValue Name="DiagramManager" Value="diagramManager">
+    <DiagramCanvas>
+        <Widgets>
+            <Navigator Width="300" Height="200" DefaultStyle="true"></Navigator>
+        </Widgets>
+    </DiagramCanvas>
+</CascadingValue>
