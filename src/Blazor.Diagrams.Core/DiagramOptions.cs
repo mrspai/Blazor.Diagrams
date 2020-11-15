@@ -22,6 +22,8 @@ namespace Blazor.Diagrams.Core
         public bool AllowPanning { get; set; } = true;
         [Description("Whether to allow zooming or not")]
         public bool AllowZooming { get; set; } = true;
+        [Description("Type of auto layout to apply when graph changes")]
+        public LayoutType AutoLayout { get; set; } = LayoutType.None;
 
         public DiagramLinkOptions Links { get; set; } = new DiagramLinkOptions();
     }
